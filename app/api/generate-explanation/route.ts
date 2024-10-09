@@ -20,9 +20,12 @@ export async function POST(request: Request) {
   const output = response.content[0];
 
   dbConnect();
-  const explanation = new Explanation({ name: input.name, topic: input.topic, explanation: output.text});
-
-  await explanation.save();
+  
+  if (output.type === 'text') {
+    const text = output.text;
+    const explanation = new Explanation({ name: input.name, topic: input.topic, explanation: text});
+    await explanation.save();
+  }
 
   console.log(output)
 

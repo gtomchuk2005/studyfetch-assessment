@@ -9,7 +9,9 @@ export default function Catalog() {
   useEffect(() => {
     const fetchExplanations = async () => {
       try {
-        const response = await fetch('/api/get-explanations');
+        const response = await fetch(('/api/get-explanations'), {
+          cache: "no-store"
+        });
         const data = await response.json();
         setExplanations(data);
       } catch (error) {

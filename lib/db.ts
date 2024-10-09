@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import { Schema, models, model } from 'mongoose';
+import { models, model } from 'mongoose';
 
 const dbConnect = async () => {
-  try { 
+  try {
     await mongoose.connect(process.env.MONGODB_URI!)
   } catch(error) {
-    console.log("not connected")
+    console.log(error)
   }
 }
 

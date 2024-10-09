@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     messages: [{ role: "user", content: JSON.stringify(input.topic) }],
   });
 
-  let output = response.content[0];
+  const output = response.content[0];
 
   dbConnect();
   const explanation = new Explanation({ name: input.name, topic: input.topic, explanation: output.text});
